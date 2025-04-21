@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Panel de Enlaces</title>
+  <title>Indicadores de Proceso - Grupo Carol</title>
   <style>
     body {
       margin: 0;
@@ -38,24 +38,51 @@
     .main {
       flex: 1;
       height: 100vh;
+      position: relative;
     }
-    iframe {
+    .main iframe {
       width: 100%;
       height: 100%;
       border: none;
+      display: none;
+    }
+    .main .placeholder {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .main .placeholder img {
+      max-width: 300px;
+      height: auto;
     }
   </style>
+  <script>
+    function showIframe(src) {
+      const iframe = document.querySelector('iframe');
+      const placeholder = document.querySelector('.placeholder');
+      iframe.src = src;
+      iframe.style.display = 'block';
+      placeholder.style.display = 'none';
+    }
+  </script>
 </head>
 <body>
   <div class="sidebar">
     <img src="https://www.farmaciacarol.com/_catalogs/masterpage/CarolMasterPage/content/img/Logo-Carol.png" alt="Logo Carol">
-    <a href="calendario.html" target="content-frame">Calendario de Reportes</a>
-    <a href="lmi.html" target="content-frame">Listado Maestro de Indicadores</a>
-    <a href="https://forms.office.com/r/GufWQBhQDV" target="content-frame">Reportar Resultados Alcanzados</a>
-    <a href="politicas.html" target="content-frame">Políticas y Condiciones</a>
+    <a href="#" onclick="showIframe('calendario.html')">Calendario de Reportes</a>
+    <a href="#" onclick="showIframe('lmi.html')">Listado Maestro de Indicadores</a>
+    <a href="#" onclick="showIframe('https://forms.office.com/r/GufWQBhQDV')">Reportar Resultados Alcanzados</a>
+    <a href="#" onclick="showIframe('politicas.html')">Políticas y Condiciones</a>
   </div>
   <div class="main">
-    <iframe name="content-frame" src="inicio.html"></iframe>
+    <div class="placeholder">
+      <img src="https://www.farmaciacarol.com/_catalogs/masterpage/CarolMasterPage/content/img/Logo-Carol.png" alt="Logo Central">
+    </div>
+    <iframe name="content-frame"></iframe>
   </div>
 </body>
 </html>
